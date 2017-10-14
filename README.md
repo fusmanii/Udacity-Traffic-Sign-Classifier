@@ -88,6 +88,7 @@ This is sample of the image set:
 ![alt text][image1]
 
 This is what the image distribution look like:
+
 ![alt text][image2]
 ![alt text][image3]
 ![alt text][image4]
@@ -118,6 +119,7 @@ Here is an example of an original image and an augmented image:
 ![Augmentation][image9]
 
 This is what the training data looks after the augmentation:
+
 ![Distribution][image10]
 
 The pixel average of all the train images was 81.9549565999. It was normalized to 0.364244251555. This is what the images look like after the normalization:
