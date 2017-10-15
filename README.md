@@ -10,12 +10,12 @@ In this project, you will use what you've learned about deep neural networks and
 This lab requires:
 
 * [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit)
-* [Jupyter] (http://jupyter.org/)
-* [NumPy] (http://www.numpy.org/)
-* [OpenCV] (https://opencv.org/)
-* [Mathplotlib] (https://matplotlib.org/index.html)
-* [Tensorflow] (https://www.tensorflow.org/)
-* [SciPy] (https://www.scipy.org/)
+* [Jupyter](http://jupyter.org/)
+* [NumPy](http://www.numpy.org/)
+* [OpenCV](https://opencv.org/)
+* [Mathplotlib](https://matplotlib.org/index.html)
+* [Tensorflow](https://www.tensorflow.org/)
+* [SciPy](https://www.scipy.org/)
 
 The lab environment can be created with CarND Term1 Starter Kit. Click [here](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) for the details.
 
