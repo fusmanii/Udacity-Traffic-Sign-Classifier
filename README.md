@@ -97,7 +97,9 @@ This is what the image distribution look like:
 
 ####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-The data set was first converted to grayscale:
+The data set was first converted to grayscale. There are many reasons for this choise but the most important is that colour adds complexity without adding better performace as traffsigns colour carries very little information. The complexity comes from the fact that the in the first layer of the network the filter has to be applied to three channels rather than one, resulting in longer traning time.
+
+This is what the images look like after graysacling:
 ![grayscale][image5]
 
 Some image classes had way fewer samples than others, so to make the sample more evenly distributed the data was extended.
@@ -120,7 +122,9 @@ Here is an example of an original image and an augmented image:
 This is what the training data looks after the augmentation:
 ![Distribution][image10]
 
-The pixel average of all the train images was 81.9549565999. It was normalized to 0.364244251555. This is what the images look like after the normalization:
+The pixel average of all the train images was 81.9549565999. It was normalized to 0.364244251555. The reason behind this choise is so that there are no outliers after the fully connect layers. We after the fully connected layer the output goes through the gradient. Since the learning rate is shared across the network we would like all the outputs to have similar range. normalizing ensures that the gradients don't go out of control and one learning rate can be used. 
+
+This is what the images look like after the normalization:
 ![Normalization][image11]
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -168,17 +172,9 @@ My final model results were:
 * validation set accuracy of 0.969
 * test set accuracy of 0.950
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+I chose the architecture proposed on Sermanet/LeCunn traffic sign classification journal article. They achieved accuracy of over 99.17%. The achitecture has a multi-scale feature where after the first stage the output branches to the classifier, in addition to the output of the second stage. I believe this should improve performance as trafic signs have big scale features like the shape of the sign (round, triangular, etc.) as well as smaller details. So the branching will allow the classifier to obtain information about all the features of the input image. 
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+Before I implemented this model, I used the LeNet lab model with the augmented data set which resulted in validation accuracy of 92% and train accuracy of 99%. However, after implementing the new model I saw improved validation accuracy of 96% and train accuracy of 100%. 
  
 
 ###Test a Model on New Images
@@ -209,7 +205,7 @@ Here are the results of the prediction:
 | Speed limit (30km/h) | Speed limit (30km/h) 
 
 
-The model was able to correctly guess 8 of the 8 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 100%
+The model was able to correctly guess 8 of the 8 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set of 95%
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
